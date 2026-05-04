@@ -16,10 +16,17 @@
     📢 Activity registration is open until the end of the month. Don't loose your spot!
     </div>
     <header>
-      <h1>Mergington High School</h1>
-      <h2>Extracurricular Activities</h2>
+      <div class="header-copy">
+        <p class="header-eyebrow">Mergington Campus Hub</p>
+        <h1>Mergington High School</h1>
+        <h2>Extracurricular Activities</h2>
+      </div>
       <div id="user-controls">
         <div id="user-status">
+          <button id="manage-announcements-button" class="icon-button hidden">
+            <span class="user-icon">📣</span>
+            <span>Manage Announcements</span>
+          </button>
           <button id="login-button" class="icon-button">
             <span class="user-icon">👤</span>
             <span>Login</span>
@@ -33,6 +40,17 @@
     </header>
 
     <main>
+      <section id="announcements-section" class="hidden">
+        <div class="announcements-shell">
+          <div class="announcements-copy">
+            <p class="section-eyebrow">School Updates</p>
+            <h3>Announcements</h3>
+            <p>Timely notices, deadlines, and highlights from the staff.</p>
+          </div>
+          <div id="announcements-list" class="announcements-list"></div>
+        </div>
+      </section>
+
       <section id="activities-container">
         <div class="main-content-layout">
           <!-- Left Sidebar for Filters -->
@@ -134,6 +152,63 @@
           <button type="submit">Login</button>
         </form>
         <div id="login-message" class="hidden message"></div>
+      </div>
+    </div>
+
+    <div id="announcements-modal" class="modal hidden">
+      <div class="modal-content modal-content-wide">
+        <span class="close-announcements-modal">&times;</span>
+        <div class="manager-modal-header">
+          <div>
+            <p class="section-eyebrow">Staff Tools</p>
+            <h3>Announcement Studio</h3>
+            <p>Create, schedule, edit, and retire notices without touching the code.</p>
+          </div>
+          <button id="new-announcement-button" class="secondary-action-button">New Announcement</button>
+        </div>
+
+        <div class="announcement-manager-layout">
+          <section class="announcement-manager-panel">
+            <h4>All Announcements</h4>
+            <div id="announcement-manager-list" class="announcement-manager-list"></div>
+          </section>
+
+          <section class="announcement-editor-panel">
+            <h4 id="announcement-form-title">Create Announcement</h4>
+            <form id="announcement-form">
+              <div class="form-group">
+                <label for="announcement-title">Title</label>
+                <input type="text" id="announcement-title" maxlength="80" required placeholder="Early dismissal reminder" />
+              </div>
+
+              <div class="form-group">
+                <label for="announcement-message">Message</label>
+                <textarea id="announcement-message" rows="5" maxlength="400" required placeholder="Share the details staff and families need to know."></textarea>
+              </div>
+
+              <div class="date-grid">
+                <div class="form-group">
+                  <label for="announcement-starts-on">Start Date</label>
+                  <input type="date" id="announcement-starts-on" />
+                  <small>Optional. Leave empty to publish immediately.</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="announcement-expires-on">Expiration Date</label>
+                  <input type="date" id="announcement-expires-on" required />
+                  <small>Required. The announcement disappears after this date.</small>
+                </div>
+              </div>
+
+              <div id="announcement-form-message" class="hidden message"></div>
+
+              <div class="announcement-form-actions">
+                <button type="button" id="cancel-announcement-edit" class="ghost-button">Clear</button>
+                <button type="submit" id="save-announcement-button">Save Announcement</button>
+              </div>
+            </form>
+          </section>
+        </div>
       </div>
     </div>
 
